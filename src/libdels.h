@@ -19,8 +19,18 @@
   * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   * SOFTWARE.
   **/
-#include "libdels.h"
 
-int main(int argc, char *argv[]) {
-    return libInit();
-}
+#ifndef __IO_GITHUB_PAULYC_DELS_LIBDELS_H__
+#define __IO_GITHUB_PAULYC_DELS_LIBDELS_H__
+
+#include <boost/asio.hpp>
+
+#ifdef __cplusplus
+#define C_LINKAGE extern "C" 
+#else
+#define C_LINKAGE
+#endif
+
+C_LINKAGE int libInit();
+
+#endif

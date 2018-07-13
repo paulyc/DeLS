@@ -19,8 +19,9 @@
   * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   * SOFTWARE.
   **/
+
 #include "libdels.h"
 
-int main(int argc, char *argv[]) {
-    return libInit();
+int libInit() {
+    return 0;
 }

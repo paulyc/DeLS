@@ -22,4 +22,20 @@ cmake_minimum_required(VERSION 3.11.4)
 
 project (DeLS)
 
-add_executable(dls src/main.cpp)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /usr/local)
+find_package(Boost 1.66 REQUIRED COMPONENTS system)
+
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+
+  set(LIBRARY_SOURCES src/libmain.cpp)
+
+  add_library(dels_static STATIC ${LIBRARY_SOURCES})
+  target_link_libraries(dels_static Boost::system)
+  add_library(dels SHARED ${LIBRARY_SOURCES})
+  target_link_libraries(dels Boost::system)
+
+  add_executable(dls src/main.cpp)
+  target_link_libraries(dls dels Boost::system)
+else()
+endif()
